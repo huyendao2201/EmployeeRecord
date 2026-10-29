@@ -1,0 +1,336 @@
+:root {
+  /* Design Tokens from uupm.cc/demo/ai-chatbot-platform */
+  --primary: #5b63d3;
+  --primary-hover: #4f57c8;
+  --primary-dark: #434ba8;
+  --primary-light: rgba(91, 99, 211, 0.08);
+  --primary-light-border: rgba(91, 99, 211, 0.2);
+
+  --gradient-primary: linear-gradient(135deg, #5b63d3 0%, #8b5cf6 100%);
+  --gradient-text: linear-gradient(135deg, #5b63d3 0%, #8b5cf6 50%, #a855f7 100%);
+  --gradient-hero: radial-gradient(circle at 50% 0%, rgba(91, 99, 211, 0.09) 0%, transparent 60%),
+                   radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                   #f8fafc;
+
+  --secondary: #22c55e;
+  --secondary-light: rgba(34, 197, 94, 0.1);
+
+  --accent-crimson: #f43f5e;
+  --accent-crimson-light: rgba(244, 63, 94, 0.1);
+  --accent-amber: #f59e0b;
+  --accent-amber-light: rgba(245, 158, 11, 0.1);
+  --accent-blue: #3b82f6;
+
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-chat-user: #5b63d3;
+  --bg-chat-bot: #f8fafc;
+
+  --text: #1a1a2e;
+  --text-muted: #6c6c8a;
+  --text-dim: #94a3b8;
+
+  --border: #e5e7eb;
+  --border-light: #ebebf2;
+  --border-focus: #5b63d3;
+
+  /* Typography strictly matching uupm.cc/demo/ai-chatbot-platform */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-sans);
+  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 20px -2px rgba(91, 99, 211, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 14px 30px -4px rgba(91, 99, 211, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  --shadow-primary: 0 4px 14px rgba(91, 99, 211, 0.32);
+  --shadow-crimson: 0 4px 14px rgba(244, 63, 94, 0.32);
+
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--gradient-hero);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  font-size: 0.95rem;
+}
+
+/* Headings matching uupm.cc font-heading style */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+h1 {
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+h2 {
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+h3 {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+h4 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+h5, h6 {
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+/* Gradient Text utility */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+/* Button utilities matching uupm.cc */
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-subtle);
+  border-color: #cbd5e1;
+  color: var(--text);
+}
+
+/* Card utilities */
+.card-uupm {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-normal);
+}
+
+.card-uupm:hover {
+  border-color: var(--primary-light-border);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+button, input, select, textarea, optgroup {
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Universal Form Controls & Inputs */
+.input-uupm,
+.select-control {
+  width: 100%;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: var(--transition-fast);
+  outline: none;
+  line-height: normal;
+}
+
+.input-uupm:focus,
+.select-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background: #ffffff;
+}
+
+.input-uupm:disabled,
+.select-control:disabled {
+  background: #f8fafc;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+select.select-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Modal Form Grid & Form Group */
+.modal-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group-clean {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0; /* CRITICAL: prevents select/input from blowing out the grid column */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group-clean label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.form-group-clean.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+code, pre, kbd, samp, .font-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0;
+}
+
+/* Typography Utility Classes matching uupm.cc/demo/ai-chatbot-platform */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.tracking-tighter {
+  letter-spacing: -0.035em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

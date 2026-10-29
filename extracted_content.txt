@@ -1,0 +1,69 @@
+YÊU CẦU CỦA GIẢNG VIÊN - ĐỒ ÁN CUỐI KỲ
+Dự án website quản lý hồ sơ nhân viên
+B1: Bài toán và mục tiêu
+Tên đề tài: Thiết kế và xây dựng hệ thống quản lý hồ sơ nhân viên có tích hợp các cơ chế bảo mật và kiểm soát truy cập
+Xác định bài toán và mục tiêu
+Vấn đề: Hồ sơ nhân viên chứa thông tin quan trọng, có nguy cơ bị truy cập, chỉnh sửa hoặc tiết lộ trái phép.
+Mục tiêu: Xây dựng website quản lý hồ sơ nhân viên có khả năng kiểm soát quyền truy cập, bảo vệ dữ liệu và xử lý các hành vi truy cập bất thường.
+Đối tượng sử dụng: Nhân viên, nhân sự, kế toán và quản trị viên
+Phạm vi: Quản lý hồ sơ nhân viên, hợp đồng lao động và một số thông tin liên quan; tập trung vào bảo mật dữ liệu và phân quyền
+B2: Xác định tài sản cần bảo vệ và rủi ro
+B3: Chọn tình huống tấn công trọng tâm
+Có thể chọn chọn tình huống nhân viên cố truy cập hồ sơ của người khác bằng cách thay đổi ID trong yêu cầu API, còn gọi là IDOR
+Ví dụ:
+Nhân viên A đăng nhập bằng tài khoản hợp lệ.
+Nhân viên A được phép xem hồ sơ của chính mình.
+A cố tình thay đổi ID trong yêu cầu API để lấy hồ sơ của nhân viên B.
+Máy chủ kiểm tra quyền truy cập đối với hồ sơ B.
+Nếu A không có quyền, máy chủ từ chối yêu cầu và không trả về dữ liệu của B.
+Hệ thống ghi nhận sự kiện vào nhật ký nếu phù hợp với chính sách giám sát
+Điểm cần chứng minh: Đăng nhập thành công không có nghĩa là người dùng được phép truy cập mọi hồ sơ.
+B4: Thiết kế kiến trúc hệ thống
+B5: Triển khai các chức năng và cơ chế bảo mật
+Nhóm chức năng nghiệp vụ:
+Đăng nhập và đăng xuất
+Xem và cập nhật hồ sơ theo quyền
+Quản lý hồ sơ nhân viên
+Quản lý hợp đồng lao động ở mức cơ bản
+Quản lý tài khoản và vai trò
+Nhóm cơ chế bảo mật:
+Xác thực người dùng
+Phân quyền theo vai trò (RBAC)
+Kiểm tra quyền đối với từng hồ sơ ở phía máy chủ
+Kiểm tra dữ liệu đầu vào và sử dụng truy vấn an toàn
+Giới hạn số lần đăng nhập thất bại
+Ghi nhật ký các thao tác quan trọng
+Bảo vệ thông tin đăng nhập và dữ liệu khi truyền tải
+B6: Viết test case và chứng minh kết quả
+B7:Phân tích trade-off
+CÁC QUYẾT ĐỊNH THIẾT KẾ QUAN TRỌNG
+
+--- TABLE 1 ---
+THÔNG BÁO: HƯỚNG DẪN THUYẾT TRÌNH ĐỒ ÁN CUỐI KỲ Học phần: Bảo mật mạng máy tính và hệ thống Các nhóm chuẩn bị slide và demo theo các nội dung chính sau: 1.	Giới thiệu bài toán: Nêu vấn đề cần giải quyết, đối tượng sử dụng và hướng lựa chọn (Security hoặc Personal Privacy). 2.	Thiết kế hệ thống: Trình bày kiến trúc, luồng dữ liệu, các rủi ro và cơ chế bảo vệ được lựa chọn. 3.	Demo: Minh họa hoạt động của hệ thống và cách xử lý ít nhất một tình huống rủi ro. 4.	Đánh đổi trong thiết kế: Phân tích ít nhất một sự đánh đổi giữa bảo mật, riêng tư, tiện lợi, chi phí hoặc khả năng triển khai. Trong slide, nhóm cần nêu rõ các quyết định thiết kế quan trọng. Đến phần demo, nhóm cần minh họa trực tiếp trên web hoặc mô hình đã xây dựng, đúng với những nội dung thiết kế đã trình bày trong slide. Ví dụ, nếu nhóm xác định có 5 quyết định thiết kế quan trọng, cần trình bày đầy đủ cả 5 trong slide; phần demo có thể chọn 2–3 quyết định tiêu biểu để minh họa. Nếu nhóm có 2–4 quyết định thiết kế, có thể demo tất cả nếu thời gian cho phép. Các nhóm chỉ có tối đa 5 phút trình bày.  Lưu ý: Các nhóm cần chuẩn bị và chạy thử phần demo trước buổi thuyết trình để kiểm tra hệ thống, dữ liệu và các chức năng liên quan, hạn chế phát sinh lỗi trong quá trình trình bày.
+
+--- TABLE 2 ---
+Tài sản cần bảo vệ | Rủi ro | Cơ chế bảo vệ dự kiến
+Tài khoản người dùng | Đoán mật khẩu, chiếm quyền tài khoản | Băm mật khẩu, giới hạn đăng nhập sai, MFA
+Hồ sơ nhân viên | Người không có quyền xem hồ sơ | Phân quyền và kiểm tra quyền ở phía máy chủ
+Hợp đồng lao động | Đọc hoặc tải tài liệu trái phép | Kiểm soát quyền truy cập từng tài liệu
+Dữ liệu nhân viên | Bị sửa đổi trái phép | Kiểm tra quyền sửa, xác thực dữ liệu đầu vào
+Nhật ký hoạt động | Khó xác định ai đã thao tác | Ghi Audit Log và hạn chế quyền sửa nhật ký
+Cơ sở dữ liệu | Truy vấn trái phép hoặc SQL Injection | Truy vấn an toàn, phân quyền tài khoản cơ sở dữ liệu
+
+--- TABLE 3 ---
+Biện pháp | Lợi ích | Đánh đổi ngắn hạn | Đánh đổi dài hạn
+MFA | Tăng khả năng bảo vệ tài khoản | Đăng nhập thêm bước, tốn công triển khai | Giảm rủi ro chiếm quyền tài khoản nhưng cần duy trì cơ chế khôi phục
+Phân quyền chi tiết | Hạn chế truy cập trái phép | Tốn thời gian thiết kế và kiểm thử | Dễ kiểm soát quyền hơn nhưng cần cập nhật khi vai trò thay đổi
+Audit Log | Hỗ trợ truy vết sự kiện | Tốn dung lượng lưu trữ | Hỗ trợ điều tra nhưng cần quản lý thời hạn lưu và quyền truy cập nhật ký
+
+--- TABLE 4 ---
+QĐ1:Phân quyền truy cập theo vai trò và từng hồ sơ Rủi ro: Nhân viên có thể cố truy cập hồ sơ của người khác bằng cách thay đổi ID trong yêu cầu API. Giải pháp:Backend Django REST Framework kiểm tra quyền của người dùng đối với từng hồ sơ trước khi trả dữ liệu. Demo:Đăng nhập bằng tài khoản nhân viên A, thử truy cập hồ sơ nhân viên B và chứng minh hệ thống từ chối nếu A không có quyền.
+
+--- TABLE 5 ---
+QĐ2: Kiểm tra và xác thực dữ liệu đầu vào Rủi ro:Người dùng gửi dữ liệu không hợp lệ hoặc cố tình chèn nội dung độc hại vào yêu cầu Giải pháp:Kiểm tra dữ liệu ở backend, sử dụng truy vấn an toàn và không tin tưởng dữ liệu chỉ vì người dùng đã đăng nhập Demo:Gửi dữ liệu không hợp lệ và cho thấy hệ thống từ chối hoặc xử lý an toàn
+
+--- TABLE 6 ---
+QĐ3: Bảo vệ tài khoản đăng nhập Rủi ro:Kẻ tấn công thử nhiều mật khẩu để chiếm quyền tài khoản Giải pháp: Băm mật khẩu bằng cơ chế phù hợp, giới hạn đăng nhập thất bại và cân nhắc MFA Demo:Thử đăng nhập sai nhiều lần để kiểm tra cơ chế giới hạn, nếu đã triển khai
+
+--- TABLE 7 ---
+QĐ4: Ghi nhật ký các hoạt động quan trọng Rủi ro:Khó xác định ai đã truy cập hoặc chỉnh sửa hồ sơ khi có sự cố Giải pháp:Ghi nhận các sự kiện cần thiết như người thực hiện, hành động, thời gian và kết quả; hạn chế quyền sửa hoặc xóa nhật ký Demo:Thực hiện một thao tác cập nhật hồ sơ và kiểm tra nhật ký được tạo ra
